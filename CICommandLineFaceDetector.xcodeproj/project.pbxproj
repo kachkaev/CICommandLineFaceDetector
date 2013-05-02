@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		115C250E17327BD10039039A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 115C250D17327BD10039039A /* Foundation.framework */; };
 		115C251117327BD10039039A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 115C251017327BD10039039A /* main.m */; };
-		115C251517327BD10039039A /* CICommandLineFaceDetector.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 115C251417327BD10039039A /* CICommandLineFaceDetector.1 */; };
+		115C251C17327C1A0039039A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 115C251B17327C1A0039039A /* QuartzCore.framework */; };
+		115C251E17328DBC0039039A /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 115C251D17328DBC0039039A /* AppKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -19,7 +20,6 @@
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
-				115C251517327BD10039039A /* CICommandLineFaceDetector.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -30,7 +30,8 @@
 		115C250D17327BD10039039A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		115C251017327BD10039039A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		115C251317327BD10039039A /* CICommandLineFaceDetector-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CICommandLineFaceDetector-Prefix.pch"; sourceTree = "<group>"; };
-		115C251417327BD10039039A /* CICommandLineFaceDetector.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = CICommandLineFaceDetector.1; sourceTree = "<group>"; };
+		115C251B17327C1A0039039A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
+		115C251D17328DBC0039039A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +40,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				115C250E17327BD10039039A /* Foundation.framework in Frameworks */,
+				115C251C17327C1A0039039A /* QuartzCore.framework in Frameworks */,
+				115C251E17328DBC0039039A /* AppKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +68,8 @@
 		115C250C17327BD10039039A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				115C251D17328DBC0039039A /* AppKit.framework */,
+				115C251B17327C1A0039039A /* QuartzCore.framework */,
 				115C250D17327BD10039039A /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -74,7 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				115C251017327BD10039039A /* main.m */,
-				115C251417327BD10039039A /* CICommandLineFaceDetector.1 */,
 				115C251217327BD10039039A /* Supporting Files */,
 			);
 			path = CICommandLineFaceDetector;
@@ -242,6 +246,7 @@
 				115C251A17327BD10039039A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

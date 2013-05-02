@@ -60,16 +60,17 @@ int main(int argc, const char * argv[])
                 return 1;
             }
         }
-    
        
         // Init the file manager, the face detector and other variables
         NSFileManager *fileManager = [NSFileManager defaultManager];
         CIDetector *faceDetector = [CIDetector detectorOfType:CIDetectorTypeFace context:nil options:[NSDictionary dictionaryWithObjectsAndKeys:(lowAccuracy ? CIDetectorAccuracyLow : CIDetectorAccuracyHigh), CIDetectorAccuracy, nil]];
+        NSDictionary  *opts = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt: 1], CIDetectorImageOrientation, nil];
         
         NSString *imagePath;
         NSArray *faces;
         int rc;
         char buff[300];
+        float imageHeight;
 
         // Main loop
         while (true) {
@@ -100,21 +101,27 @@ int main(int argc, const char * argv[])
             // Handle invalid images
             if (image == NULL) {
                 printf ("Error: wrong image\n");
+                continue;
             }
             
+            // Extract image height to flip the y coordinates of the faces later on
+            imageHeight = [[[image properties] valueForKey:@"PixelHeight"] floatValue];
+
             // Detect faces
-            faces = [faceDetector featuresInImage:image];
-            
+            faces = [faceDetector featuresInImage:image options: opts];
+
             // Generate the output
             NSMutableString* facesOutput = [NSMutableString string];
             
             for (CIFaceFeature *face in faces) {
                 CGRect bounds = face.bounds;
-                [facesOutput appendFormat:@",[%.0f,%.0f,%.0f,%.0f]", bounds.origin.x, bounds.origin.y, bounds.size.width, bounds.size.height];
+                [facesOutput appendFormat:@",[%.0f,%.0f,%.0f,%.0f]", bounds.origin.x, imageHeight - bounds.origin.y - bounds.size.height, bounds.size.width, bounds.size.height];
             }
             if ([faces count] > 0) {
                 [facesOutput deleteCharactersInRange:NSMakeRange(0, 1)];
             }
+            
+            // Return the output
             printf("[%s]\n", [facesOutput UTF8String]);
         }
     }
